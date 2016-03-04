@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  correct_item: 1
+  total_item: 1
+  finished_date: 2016-03-03 17:07:30
+  user_id: 
+  category_id: 
+
+two:
+  correct_item: 1
+  total_item: 1
+  finished_date: 2016-03-03 17:07:30
+  user_id: 
+  category_id: 
