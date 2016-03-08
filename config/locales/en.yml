@@ -39,5 +39,9 @@ en:
       title: "Help"
     home:
       title: "Framgia E-Learning System"
+      signup: "Sign Up"
+  users:
+    new:
+      title: "Sign Up"
 
 

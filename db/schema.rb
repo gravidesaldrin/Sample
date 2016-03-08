@@ -13,15 +13,15 @@
 
 ActiveRecord::Schema.define(version: 20160303091121) do
 
-  create_table "activties", force: :cascade do |t|
+  create_table "activities", force: :cascade do |t|
     t.string   "action",     limit: 255
     t.integer  "user_id",    limit: 4
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end
 
-  add_index "activties", ["user_id", "created_at"], name: "index_activties_on_user_id_and_created_at", using: :btree
-  add_index "activties", ["user_id"], name: "index_activties_on_user_id", using: :btree
+  add_index "activities", ["user_id", "created_at"], name: "index_activities_on_user_id_and_created_at", using: :btree
+  add_index "activities", ["user_id"], name: "index_activities_on_user_id", using: :btree
 
   create_table "categories", force: :cascade do |t|
     t.string   "cat_name",   limit: 255
@@ -30,20 +30,6 @@ ActiveRecord::Schema.define(version: 20160303091121) do
   end
 
   add_index "categories", ["cat_name"], name: "index_categories_on_cat_name", using: :btree
-
-  create_table "lesson_word_answers", force: :cascade do |t|
-    t.integer  "lesson_id",      limit: 4
-    t.integer  "word_id",        limit: 4
-    t.integer  "word_answer_id", limit: 4
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
-  end
-
-  add_index "lesson_word_answers", ["lesson_id", "word_answer_id"], name: "index_lesson_word_answers_on_lesson_id_and_word_answer_id", using: :btree
-  add_index "lesson_word_answers", ["lesson_id", "word_id"], name: "index_lesson_word_answers_on_lesson_id_and_word_id", using: :btree
-  add_index "lesson_word_answers", ["lesson_id"], name: "index_lesson_word_answers_on_lesson_id", using: :btree
-  add_index "lesson_word_answers", ["word_answer_id"], name: "index_lesson_word_answers_on_word_answer_id", using: :btree
-  add_index "lesson_word_answers", ["word_id"], name: "index_lesson_word_answers_on_word_id", using: :btree
 
   create_table "lessons", force: :cascade do |t|
     t.integer  "correct_item",  limit: 4
@@ -69,6 +55,20 @@ ActiveRecord::Schema.define(version: 20160303091121) do
   add_index "relationships", ["followed_id"], name: "index_relationships_on_followed_id", using: :btree
   add_index "relationships", ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true, using: :btree
   add_index "relationships", ["follower_id"], name: "index_relationships_on_follower_id", using: :btree
+
+  create_table "results", force: :cascade do |t|
+    t.integer  "lesson_id",      limit: 4
+    t.integer  "word_id",        limit: 4
+    t.integer  "word_answer_id", limit: 4
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
+  add_index "results", ["lesson_id", "word_answer_id"], name: "index_results_on_lesson_id_and_word_answer_id", using: :btree
+  add_index "results", ["lesson_id", "word_id"], name: "index_results_on_lesson_id_and_word_id", using: :btree
+  add_index "results", ["lesson_id"], name: "index_results_on_lesson_id", using: :btree
+  add_index "results", ["word_answer_id"], name: "index_results_on_word_answer_id", using: :btree
+  add_index "results", ["word_id"], name: "index_results_on_word_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "name",            limit: 255
@@ -105,12 +105,12 @@ ActiveRecord::Schema.define(version: 20160303091121) do
   add_index "words", ["category_id"], name: "index_words_on_category_id", using: :btree
   add_index "words", ["word"], name: "index_words_on_word", using: :btree
 
-  add_foreign_key "activties", "users"
-  add_foreign_key "lesson_word_answers", "lessons"
-  add_foreign_key "lesson_word_answers", "word_answers"
-  add_foreign_key "lesson_word_answers", "words"
+  add_foreign_key "activities", "users"
   add_foreign_key "lessons", "categories"
   add_foreign_key "lessons", "users"
+  add_foreign_key "results", "lessons"
+  add_foreign_key "results", "word_answers"
+  add_foreign_key "results", "words"
   add_foreign_key "word_answers", "words"
   add_foreign_key "words", "categories"
 end
