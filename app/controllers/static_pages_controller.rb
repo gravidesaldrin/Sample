@@ -1,4 +1,6 @@
 class StaticPagesController < ApplicationController
+  layout :admin
+
   def home
   end
 
@@ -9,5 +11,14 @@ class StaticPagesController < ApplicationController
   end
 
   def help
+  end
+
+  private
+  def admin
+    if logged_in?
+      current_user.admin? ? "admin" : "application"
+    else
+      "application"
+    end
   end
 end

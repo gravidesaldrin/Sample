@@ -1,0 +1,7 @@
+<% @user ||= current_user %>
+<% provide :title, @user.name %>
+<div class="row">
+  <h1>
+    <%= @user.name %>
+  </h1>
+</div>

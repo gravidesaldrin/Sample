@@ -1,2 +1,4 @@
 <strong> <h1> <%= t ".title" %> </h1> </strong>
-<%= link_to t(".signup"), signup_path, {class: "btn btn-primary btn-xl page-scroll"} %>
+<% unless logged_in? %>
+  <%= link_to t(".signup"), signup_path, {class: "btn btn-primary btn-xl page-scroll"} %>
+<% end %>

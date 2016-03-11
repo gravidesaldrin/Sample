@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160308044410) do
+ActiveRecord::Schema.define(version: 20160309061644) do
 
   create_table "activities", force: :cascade do |t|
     t.string   "action",     limit: 255
@@ -24,17 +24,17 @@ ActiveRecord::Schema.define(version: 20160308044410) do
   add_index "activities", ["user_id"], name: "index_activities_on_user_id", using: :btree
 
   create_table "categories", force: :cascade do |t|
-    t.string   "cat_name",   limit: 255
+    t.string   "name",       limit: 255
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end
 
-  add_index "categories", ["cat_name"], name: "index_categories_on_cat_name", using: :btree
+  add_index "categories", ["name"], name: "index_categories_on_name", using: :btree
 
   create_table "lessons", force: :cascade do |t|
     t.integer  "correct_item",  limit: 4
     t.integer  "total_item",    limit: 4
-    t.datetime "finished_date"
+    t.datetime "finished_time"
     t.integer  "user_id",       limit: 4
     t.integer  "category_id",   limit: 4
     t.datetime "created_at",              null: false
@@ -71,40 +71,45 @@ ActiveRecord::Schema.define(version: 20160308044410) do
   add_index "results", ["word_id"], name: "index_results_on_word_id", using: :btree
 
   create_table "users", force: :cascade do |t|
-    t.string   "name",            limit: 255
-    t.string   "email",           limit: 255
-    t.string   "password_digest", limit: 255
-    t.boolean  "admin"
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
-    t.string   "remember_digest", limit: 255
+    t.string   "name",              limit: 255
+    t.string   "email",             limit: 255
+    t.string   "password_digest",   limit: 255
+    t.boolean  "admin",                         default: false
+    t.datetime "created_at",                                    null: false
+    t.datetime "updated_at",                                    null: false
+    t.string   "remember_digest",   limit: 255
+    t.string   "activation_digest", limit: 255
+    t.boolean  "activated",                     default: false
+    t.datetime "activated_at"
+    t.string   "reset_digest",      limit: 255
+    t.datetime "reset_sent_at"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["name"], name: "index_users_on_name", using: :btree
 
   create_table "word_answers", force: :cascade do |t|
-    t.string   "label",      limit: 255
-    t.boolean  "correct"
+    t.string   "content",    limit: 255
+    t.boolean  "correct",                default: false
     t.integer  "word_id",    limit: 4
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
   end
 
-  add_index "word_answers", ["word_id", "label", "correct"], name: "index_word_answers_on_word_id_and_label_and_correct", unique: true, using: :btree
-  add_index "word_answers", ["word_id", "label"], name: "index_word_answers_on_word_id_and_label", using: :btree
+  add_index "word_answers", ["word_id", "content", "correct"], name: "index_word_answers_on_word_id_and_content_and_correct", unique: true, using: :btree
+  add_index "word_answers", ["word_id", "content"], name: "index_word_answers_on_word_id_and_content", using: :btree
   add_index "word_answers", ["word_id"], name: "index_word_answers_on_word_id", using: :btree
 
   create_table "words", force: :cascade do |t|
-    t.string   "word",        limit: 255
+    t.string   "content",     limit: 255
     t.integer  "category_id", limit: 4
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
   end
 
-  add_index "words", ["category_id", "word"], name: "index_words_on_category_id_and_word", unique: true, using: :btree
+  add_index "words", ["category_id", "content"], name: "index_words_on_category_id_and_content", unique: true, using: :btree
   add_index "words", ["category_id"], name: "index_words_on_category_id", using: :btree
-  add_index "words", ["word"], name: "index_words_on_word", using: :btree
+  add_index "words", ["content"], name: "index_words_on_content", using: :btree
 
   add_foreign_key "activities", "users"
   add_foreign_key "lessons", "categories"
