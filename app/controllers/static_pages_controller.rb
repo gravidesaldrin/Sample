@@ -15,10 +15,9 @@ class StaticPagesController < ApplicationController
 
   private
   def admin
-    if logged_in?
-      current_user.admin? ? "admin" : "application"
-    else
-      "application"
+    "application"
+    if logged_in? && current_user.admin?
+      "admin"
     end
   end
 end

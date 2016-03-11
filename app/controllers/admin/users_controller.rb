@@ -1,5 +1,5 @@
 class Admin::UsersController < AdminController
-  before_action :find_user, only: [:edit, :update, :destroy]
+  before_action :find_user, except: [:index]
 
   def index
     @users = User.paginate page: params[:page]
@@ -26,12 +26,12 @@ class Admin::UsersController < AdminController
 
   def destroy
     @user.destroy
-    redirect_to users_path
+    redirect_to admin_users_path
   end
 
   private
   def user_params
-    params.require(:user).permit(:name, :email, :password,
-      :password_confirmation)
+    params.require(:user).permit:name, :email, :password,
+      :password_confirmation
   end
 end

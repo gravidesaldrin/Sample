@@ -1,5 +1,7 @@
 en:
   admin:
+    require_admin:
+      warning: "You do not have Admin Rights"
     shared_pages:
       navbar:
         title: "Framgia E-Learning System - Admin "
@@ -78,6 +80,8 @@ en:
       save: "Follow"
     unfollow:
       save: "Unfollow"
+    require_user:
+      warning: "You do not have priveleges"
   sessions:
     new:
       title: "Log In"

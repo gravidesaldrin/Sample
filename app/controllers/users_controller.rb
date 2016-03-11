@@ -41,7 +41,7 @@ class UsersController < ApplicationController
   private
   def require_user
     if current_user.admin?
-      flash[:info] = "You do not have priveleges"
+      flash[:warning] = t ".warning"
       redirect_to admin_user_path current_user
     end
   end
