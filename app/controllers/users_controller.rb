@@ -9,6 +9,8 @@ class UsersController < ApplicationController
   end
 
   def show
+    @followers = @user.followers.paginate page: params[:page]
+    @following = @user.following.paginate page: params[:page]
   end
 
   def new

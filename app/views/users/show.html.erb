@@ -1,7 +1,36 @@
 <% provide :title, @user.name %>
-<div class="row">
-  <h1>
-    <%= @user.name %>
-    <%= render "follow_form" %>
-  </h1>
+<div class="container">
+  <div class= "col-md-9">
+    <ul class="list-inline pull-right">
+     <li><%= render "users/follow_form" %></li>
+    </ul>
+    <h1> <%= @user.name %> </h1>
+    <hr>
+  </div>
+</div>
+
+<div class="container">
+  <div class="col-md-9">
+    <ul class="nav nav-tabs" id="myTab">
+      <li class="active"><a href="#activity_tab" data-toggle="tab">Activities</a></li>
+      <li><a href="#follower_tab" data-toggle="tab">Followers</a></li>
+      <li><a href="#following_tab" data-toggle="tab">Following</a></li>
+    </ul>
+    <div class="tab-content">
+      <div class="tab-pane active" id="activity_tab">
+        <br/>
+        **On Progress
+      </div>
+      <div class="tab-pane" id="follower_tab">
+        <div id = "followers_div" %>
+          <%= render "users/followers" %>
+        </div>
+      </div>
+      <div class="tab-pane" id="following_tab">
+        <div id = "following_div" %>
+          <%= render "users/following" %>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
