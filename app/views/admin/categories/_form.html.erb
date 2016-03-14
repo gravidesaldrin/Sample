@@ -5,18 +5,19 @@
     <%= f.text_field :name, class: "form-control" %>
     <%= f.hidden_field :id %>
   </div>
-  <hr/>
+  <div> &nbsp; </div>
   <%= label_tag "Word" %>
   <%= f.fields_for :words do |builder| %>
     <%= render "word_fields", f: builder %>
   <% end %>
-  <div align = "right">
-  <div class="added-word"></div>
-  <%= link_to_add_fields "Add Word", f, :words,
-    "btn btn-primary add-remove-word", "Word" %>
+  <div class = "form-group">
+    <div class="added-word"></div>
+    <div align = "right">
+    <%= link_to_add_fields "Add Word", f, :words,
+      "btn btn-primary add-remove-word", "Word" %>
+    </div>
   </div>
-
   <hr/>
-
   <%= f.submit t(".save"), class: "btn btn-primary" %>
+  <div> &nbsp; </div>
 <% end %>

@@ -1,4 +1,8 @@
 <% provide :title, t(".title") %>
+<ul class="breadcrumb">
+    <li><%= link_to t(".title"), admin_users_path %></li>
+    <li class="active"><%= t ".current_action" %></li>
+</ul>
 <div class="panel panel-default panel-table">
   <div class="panel-heading">
     <div class="row">

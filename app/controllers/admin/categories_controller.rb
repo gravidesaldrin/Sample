@@ -7,6 +7,7 @@ class Admin::CategoriesController < AdminController
   def new
     @category = Category.new
     @category.words.build
+    @category.word.word_answers.build
   end
 
   def create
@@ -20,6 +21,7 @@ class Admin::CategoriesController < AdminController
   end
 
   def show
+    @words = @category.words.paginate page: params[:page]
   end
 
   def edit
@@ -46,7 +48,8 @@ class Admin::CategoriesController < AdminController
   end
 
   def category_params
-    params.require(:category).permit :name, words_attributes: [:id, :content, :_destroy]
+    params.require(:category).permit :name, words_attributes: [:id, :content,
+      :_destroy, word_answers_attributes: [:id, :content, :correct, :_destroy] ]
   end
 
 

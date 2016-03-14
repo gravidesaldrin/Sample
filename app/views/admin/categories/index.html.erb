@@ -1,4 +1,8 @@
 <% provide :title, t(".title") %>
+<ul class="breadcrumb">
+    <li><%= link_to t(".title"), admin_categories_path %></li>
+    <li class="active"><%= t ".current_action" %></li>
+</ul>
 <div class="panel panel-default panel-table">
   <div class="panel-heading">
     <div class="row">
@@ -20,7 +24,7 @@
           <th><%= t ".total_words" %></th>
         </tr>
       </thead>
-      <tbody class="users">
+      <tbody class="categories">
         <%= render @categories %>
       </tbody>
     </table>

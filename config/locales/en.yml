@@ -1,62 +1,80 @@
 en:
   admin:
     categories:
-      title: "Categories"
+      category:
+        confirm: "You Sure?"
+      create:
+        success: "Category created"
+      destroy:
+        success: "Category Deleted"
+      edit:
+        current_action: "Edit"
+        current_menu: "Categories"
+        title: "Update Category"
+      form:
+        save: "Save Category"
+      index:
+        current_action: "Index"
+        name: "Name"
+        title: "Categories"
+        total_words: "Total Words"
+      new:
+        current_action: "New"
+        current_menu: "Categories"
+        title: "New Category"
+      show:
+        current_action: "Show"
+        current_menu: "Categories"
+        words: "Words"
+      update:
+        success: "Category updated"
     require_admin:
       warning: "You do not have Admin Rights"
     shared_pages:
       navbar:
         title: "Framgia E-Learning System - Admin "
       sidebar:
-        menu: "Menu"
+        about: "About"
         all_users: "All Users"
         categories: "Categories"
-        home: "Home"
-        about: "About"
-        help: "Help"
         contact: "Contact Us"
-    categories:
-      index:
-        title: "Categories"
-        name: "Name"
-        total_words: "Total Words"
-      category:
-        confirm: "You Sure?"
-      new:
-        title: "New Category"
-      create:
-        success: "Category created"
-      edit:
-        title: "Update Category"
-      update:
-        success: "Category updated"
-      form:
-        save: "Save Category"
-      destroy:
-        success: "Category Deleted"
+        help: "Help"
+        home: "Home"
+        menu: "Menu"
     users:
-      index:
-        title: "All Users"
-        name: "Name"
-        email: "Email"
-      new:
-        title: "Create User"
-        confirmation: "Confirmation"
-        create: "Save"
-      user:
-        confirm: "You Sure?"
-      edit:
-        title: "Edit Profile"
-        page_header: "Update Profile"
-        confirmation: "Confirmation"
-        change: "Change"
-        save: "Save"
       create:
         success: "User created."
-      update:
-        success: "Profile Updated"
       destroy:
         success: "Users Deleted"
+      edit:
+        change: "Change"
+        confirmation: "Confirmation"
+        current_menu: "All Users"
+        current_action: "Edit"
+        page_header: "Update Profile"
+        save: "Save"
+        title: "Edit Profile"
+      index:
+        current_action: "Index"
+        email: "Email"
+        name: "Name"
+        title: "All Users"
+      new:
+        confirmation: "Confirmation"
+        create: "Save"
+        current_menu: "All Users"
+        current_action: "New"
+        title: "Create User"
+      show:
+        current_menu: "All Users"
+        current_action: "Show"
+      user:
+        confirm: "You Sure?"
+      update:
+        success: "Profile Updated"
+    words:
+      word:
+        confirm: "You Sure?"
   relationships:
     index:
       followers: "Followers"

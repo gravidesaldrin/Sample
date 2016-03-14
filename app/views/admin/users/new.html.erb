@@ -1,4 +1,8 @@
 <% provide :title, t(".title") %>
+<ul class="breadcrumb">
+  <li><a href="#"><%= t ".current_menu" %></a></li>
+  <li class="active"><%= t ".current_action" %></li>
+</ul>
 <strong> <h1> <%= t ".title" %> </h1> </strong>
 <div class="row">
   <div class="col-lg-8">
@@ -13,8 +17,8 @@
         <%= f.email_field :email, class: "form-control" %>
       </div>
       <div class = "form-group">
-        <%= f.label "Administrator" %>
         <%= f.check_box :admin %>
+        <%= f.label "Administrator" %>
       </div>
       <div class = "form-group">
         <%= f.label :password %>
