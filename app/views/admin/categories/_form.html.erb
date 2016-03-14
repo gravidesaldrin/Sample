@@ -1,8 +1,22 @@
-<%= form_for [:admin, @category], html: {class: "margin-bottom-40"} do |f| %>
+<%= form_for [:admin, @category], html: {multipart: true, class: "margin-bottom-40"} do |f| %>
   <%= render "shared_pages/error_messages", object: f.object %>
   <div class = "form-group">
     <%= f.label :name %>
     <%= f.text_field :name, class: "form-control" %>
+    <%= f.hidden_field :id %>
   </div>
+  <hr/>
+  <%= label_tag "Word" %>
+  <%= f.fields_for :words do |builder| %>
+    <%= render "word_fields", f: builder %>
+  <% end %>
+  <div align = "right">
+  <div class="added-word"></div>
+  <%= link_to_add_fields "Add Word", f, :words,
+    "btn btn-primary add-remove-word", "Word" %>
+  </div>
+
+  <hr/>
+
   <%= f.submit t(".save"), class: "btn btn-primary" %>
 <% end %>

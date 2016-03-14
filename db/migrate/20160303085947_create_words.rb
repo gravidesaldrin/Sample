@@ -6,6 +6,6 @@ class CreateWords < ActiveRecord::Migration
       t.timestamps null: false
     end
     add_index :words, :content
-    add_index :words, [:category_id, :content], unique: true
+    add_index :words, [:category_id, :content]
   end
 end

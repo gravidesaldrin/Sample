@@ -6,6 +6,7 @@ class Admin::CategoriesController < AdminController
 
   def new
     @category = Category.new
+    @category.words.build
   end
 
   def create
@@ -35,6 +36,7 @@ class Admin::CategoriesController < AdminController
 
   def destroy
     @category.destroy
+    flash[:success] = t ".success"
     redirect_to admin_categories_path
   end
 
@@ -44,7 +46,7 @@ class Admin::CategoriesController < AdminController
   end
 
   def category_params
-    params.require(:category).permit :name
+    params.require(:category).permit :name, words_attributes: [:id, :content, :_destroy]
   end
 
 

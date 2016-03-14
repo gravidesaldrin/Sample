@@ -107,7 +107,7 @@ ActiveRecord::Schema.define(version: 20160309061644) do
     t.datetime "updated_at",              null: false
   end
 
-  add_index "words", ["category_id", "content"], name: "index_words_on_category_id_and_content", unique: true, using: :btree
+  add_index "words", ["category_id", "content"], name: "index_words_on_category_id_and_content", using: :btree
   add_index "words", ["category_id"], name: "index_words_on_category_id", using: :btree
   add_index "words", ["content"], name: "index_words_on_content", using: :btree
 

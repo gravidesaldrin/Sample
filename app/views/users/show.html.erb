@@ -27,7 +27,7 @@
         </div>
       </div>
       <div class="tab-pane" id="following_tab">
-        <div id = "following_div" %>
+        <div id = '<%= "following_div" if current_user == @user %>' >
           <%= render "users/following" %>
         </div>
       </div>

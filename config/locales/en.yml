@@ -19,6 +19,7 @@ en:
       index:
         title: "Categories"
         name: "Name"
+        total_words: "Total Words"
       category:
         confirm: "You Sure?"
       new:
@@ -30,7 +31,9 @@ en:
       update:
         success: "Category updated"
       form:
-        save: "Save"
+        save: "Save Category"
+      destroy:
+        success: "Category Deleted"
     users:
       index:
         title: "All Users"
