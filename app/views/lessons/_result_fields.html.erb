@@ -1,0 +1,7 @@
+<div class = "form-group">
+  <%= form_for(@result) do |f| %>
+    <%= hidden_field_tag :lesson, @lesson.id %>
+    <%= hidden_field_tag :word_answer, question.id %>
+    <%= f.submit question.content, class: "btn btn-primary" %>
+  <% end %>
+</div>

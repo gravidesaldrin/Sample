@@ -6,8 +6,8 @@ class Admin::CategoriesController < AdminController
 
   def new
     @category = Category.new
-    @category.words.build
-    @category.word.word_answers.build
+    @word = @category.words.build
+    @word.word_answers.build
   end
 
   def create

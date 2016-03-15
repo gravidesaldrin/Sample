@@ -87,6 +87,22 @@ class User < ActiveRecord::Base
     following.include? other_user
   end
 
+  def current_lesson
+    lessons.find_by(finished_time: nil)
+  end
+
+  def correct_words current_category
+    self.lessons.select{|le| le.category_id == current_category.id }.map{|_| _.results.select{|re| re.word_answer.correct? }.map{ |r| r.word} }
+  end
+
+  def unlearned_words current_category
+    current_category.words.reject{|ca| self.correct_words(current_category).first.include? ca }.map{|w| w }
+  end
+
+  def unlearned_words_not_in_the_lesson current_category, current_lesson
+    current_category.words.reject{|ca| (self.correct_words(current_category).first.include? ca) || (current_lesson.results.map{|r| r.word}.include? ca) }.map{|w| w }
+  end
+
   private
   def downcase_email
     self.email = email.downcase

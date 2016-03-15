@@ -96,6 +96,7 @@ en:
       about: "About"
       help: "Help"
       contact: "Contact Us"
+      categories: "Categories"
     error_messages:
       intro: "The form contains "
   static_pages:
@@ -185,3 +186,8 @@ en:
       reset: "Reset password"
       expire_message: "This link will expire in two hours."
       ignore_message: "If you did not request your password to be reset, please ignore this email and your password will stay as it is."
+  categories:
+    index:
+      title: "Categories"
+    category:
+      save: "Start a Lesson"

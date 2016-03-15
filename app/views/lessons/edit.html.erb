@@ -1,0 +1,15 @@
+<div class = "edit_lesson">
+  <h2> <%= @question.content %> </h2>
+  <hr/>
+  <% @question.word_answers.each do |qw| %>
+    <%= render "lessons/result_fields", question: qw %>
+  <% end %>
+  <hr/>
+  <%= form_for @lesson, html: {multipart: true, class: "margin-bottom-40"} do |f| %>
+    <%= f.submit "Finish Lesson", class: "btn btn-primary" %>
+    <hr/>
+    <br/>
+    Total Item: <%= @lesson.total_item %><br/>
+    Progress: <%= @lesson.results.count %>/<%= @lesson.total_item %>
+  <% end %>
+</div>

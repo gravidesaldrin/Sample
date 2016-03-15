@@ -1,0 +1,16 @@
+<tr>
+  <td align="center">
+    <%= form_for (category.lessons.build) do |f| %>
+      <%= hidden_field_tag :category, category.id %>
+      <%= f.submit t(".save"), class: "btn btn-primary" %>
+    <% end %>
+  </td>
+  <td>
+    <%= link_to admin_category_path category do %>
+      <%= category.name %>
+    <% end %>
+  </td>
+  <td>
+    <%= category.words.count %>
+  </td>
+</tr>
